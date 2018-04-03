@@ -1,0 +1,188 @@
+
+@mixin form-styles {
+	background: $white;
+	color: $body-copy-color;
+	border-radius: 0;
+	border: 1px solid #ccc;//$light-grey;
+	padding: 1rem;
+	font-size: 1.4rem;
+	@include font(sans-serif, 300);
+
+	&:focus, &:active {
+		background: $white;
+		border: 1px solid #ccc;
+		// border: 1px solid $light-grey;
+	}
+}
+
+
+
+
+// Ninja Forms Required Label
+.ninja-forms-required-items {
+	display: none;
+}
+
+// Ninja Forms Response
+.ninja-forms-response-msg {
+	div {
+		background: $light-grey;
+		padding: 0.75rem 1.25rem;
+
+		p {
+			text-align: center;
+			margin-bottom: 0;
+		}
+
+		// Footer Forms
+		footer & {
+			// background: lighten($light-grey, 5%);
+
+			p { text-align: left; }
+		}
+	}
+
+	&.ninja-forms-success-msg {
+		color: $green;
+	}
+}
+
+
+
+
+
+
+// Form Styles
+
+form {}
+
+label {
+	color: $body-copy-color;
+	font-size: 1.4rem;
+	@include font($sans-serif, 300);
+
+	.required {
+		color: $red;
+	}
+}
+
+textarea {
+	resize: none;
+	@include no-webkit;
+	@include form-styles;
+	@include placeholder($blue);
+}
+
+
+select {
+	@include no-webkit;
+	@include form-styles;
+	width: 100% !important;
+
+	+ .genericon {
+		float: right;
+		position: relative;
+		color: $mid-grey;
+		pointer-events: none;
+		top: -2.5rem;
+		right: 1rem;
+	}
+}
+
+
+input {
+	// ------- Standard Fields ------- //
+
+	// Text Input
+	&[type="text"], &[type="email"], &[type="tel"], &[type="url"], &[type="password"], &[type="search"], &[type="number"] {
+		@include no-webkit;
+		@include form-styles;
+		@include placeholder($blue);
+	}
+
+	// Checkbox
+	&[type="checkbox"] {
+		@include no-webkit;
+		@include form-styles;
+
+		&:checked {
+			position: relative;
+			background: $link-color;
+			border-color: $link-color;
+
+			&:after {
+				content: '\f418';
+				position: absolute;
+				top: 0;
+				left: 0;
+				color: $white;
+				font-family: 'Genericons';
+				font-size: 1.8rem;
+			}
+		}
+	}
+
+	// Submit Button
+	&[type="submit"],
+	&[type="button"] {
+		@include no-webkit;
+		@extend .button;
+		cursor: pointer;
+	}
+
+
+	// ------- Field Specific ------- //
+
+	// Text
+	&[type="text"] {}
+
+	// Contact Fields
+	&[type="email"] {}
+	&[type="tel"] {}
+
+	// URL
+	&[type="url"] {}
+
+	// Search
+	&[type="search"] {
+
+		body.error404 .page-content & {
+			width: 100%;
+			margin: 1rem 0;
+
+		}
+	}
+
+	// Numbers
+	&[type="number"] {}
+
+	// Range (Slider)
+	&[type="range"] {}
+
+	// Passwords
+	&[type="password"] {}
+
+	// Submit and Buttons
+	&[type="submit"] {}
+	&[type="button"] {}
+	&[type="image"] {}
+	&[type="reset"] {}
+
+	// Checkbox & Radio Button
+	&[type="checkbox"] {}
+	&[type="radio"] {}
+
+	// Time and Dates
+	&[type="time"] {}
+	&[type="date"] {}
+	&[type="datetime"] {}
+	&[type="datetime-local"] {}
+	&[type="month"] {}
+	&[type="week"] {}
+
+	// Color
+	&[type="color"] {}
+
+	// Files
+	&[type="file"] {}
+}

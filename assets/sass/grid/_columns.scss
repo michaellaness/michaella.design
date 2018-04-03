@@ -1,0 +1,229 @@
+
+// Columns
+.column {
+  float: left;
+  padding: 0 $grid_padding;
+  margin: 0 $grid_gutter 0 0;
+
+  &:first-of-type,
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-of-type,
+  &:last-child {
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+  // Generate Grid
+  $i: $grid_base;
+  @while $i > 0 {
+    &-#{$i} {
+      width: ((100% - ($grid_gutter * ($i - 1))) / $i);
+
+      // Responsive
+      @include breakpoint(tablet) {}
+
+      @include breakpoint(phone) {
+        width: 100%;
+        margin-right: 0;
+        padding-right: 0;
+        padding-left: 0;
+        @include rem(margin-bottom, $grid_vertical-space);
+
+        &:last-of-type,
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    // Increase the counter
+    $i: $i - 1;
+  }
+
+  // --------- Plain English Fallbacks --------- //
+
+  // One Eighth - 1/8
+  @if $grid_base % 8 == 0 {
+    &.eighth,
+    &.eighths,
+    &.one_eighth,
+    &.one_eighths,
+    &.one-eighth,
+    &.one-eighths {
+      @extend .column-#{$grid_base / ($grid_base / 8)};
+    }
+  }
+
+  // One Seventh - 1/7
+  @if $grid_base % 7 == 0 {
+    &.seventh,
+    &.sevenths,
+    &.one_seventh,
+    &.one_sevenths,
+    &.one-seventh,
+    &.one-sevenths {
+      @extend .column-#{$grid_base / ($grid_base / 7)};
+    }
+  }
+
+  // One Sixth - 1/6
+  @if $grid_base % 6 == 0 {
+    &.sixth,
+    &.sixths,
+    &.one_sixth,
+    &.one_sixths,
+    &.one-sixth,
+    &.one-sixths {
+      @extend .column-#{$grid_base / ($grid_base / 6)};
+    }
+  }
+
+  // One Fifth - 1/5
+  // @if $grid_base % 5 == 0 {
+    &.fifth,
+    &.fifths,
+    &.one_fifth,
+    &.one_fifths,
+    &.one-fifth,
+    &.one-fifths {
+      @extend .column-#{$grid_base / ($grid_base / 5)};
+
+      &.offset-4 { margin-left: 42%; }
+      &.offset-3:first-of-type { margin-left: 31%; }
+      &.offset-2:first-of-type { margin-left: 21%; }
+      &.offset-1:first-of-type { margin-left: 11%; }
+    }
+  // }
+
+  // One Fourth - 1/4
+  @if $grid_base % 4 == 0 {
+    &.quarter,
+    &.quarters,
+    &.fourth,
+    &.fourths,
+    &.one-fourth,
+    &.one-fourths,
+    &.one_fourth,
+    &.one_fourths,
+    &.one_quarter,
+    &.one_quarters,
+    &.one-quarter,
+    &.one-quarters {
+      @extend .column-#{$grid_base / ($grid_base / 4)};
+
+      &.offset-3 { margin-left: 38%; }
+      &.offset-2:first-of-type { margin-left: 26%; }
+      &.offset-1:first-of-type { margin-left: 13%; }
+
+      @include breakpoint(tablet) {
+        width: 49%;
+        margin-right: 2%;
+        margin-bottom: $grid_vertical-space;
+
+        &:nth-child(3n),
+        &:last-of-type {
+          margin-right: 0;
+        }
+      }
+
+      @include breakpoint(phone) {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 3rem;
+      }
+    }
+  }
+
+  // Three Fourth - 3/4
+  @if $grid_base % 4 == 0 {
+    &.three-fourth,
+    &.three-fourths,
+    &.three_fourth,
+    &.three_fourths,
+    &.three_quarter,
+    &.three_quarters,
+    &.three-quarter,
+    &.three-quarters {
+      // @extend .column-#{$grid_base / ($grid_base / 4)};
+      width: (75% - $grid_gutter);
+
+      @include breakpoint(tablet) {
+        width: 100%;
+      }
+    }
+  }
+
+  // One Third & Two Third - 1/3 & 2/3
+  @if $grid_base % 3 == 0 {
+    // One Third
+    &.third,
+    &.thirds,
+    &.one_third,
+    &.one_thirds,
+    &.one-third,
+    &.one-thirds {
+      @extend .column-#{$grid_base / ($grid_base / 3)};
+
+      &.offset-2 { margin-left: 33%; }
+      &.offset-1:first-of-type { margin-left: 17%; }
+    }
+
+
+    // Two Third - Kind of tricky
+    &.two_third,
+    &.two_thirds,
+    &.two-third,
+    &.two-thirds {
+      // @extend .column-#{$grid_base / ($grid_base / 3)};
+      width: (((100% - ($grid_gutter * (3 - (2 + (1 / 3))))) / 3) * 2);
+      @include breakpoint(phone) {
+        width: 100%;
+        margin-right: 0;
+        padding-right: 0;
+        padding-left: 0;
+        margin-bottom: $grid_vertical-space;
+      }
+    }
+  }
+
+  // One Half - 1/2
+  @if $grid_base % 2 == 0 {
+    &.half,
+    &.halfs,
+    &.halve,
+    &.halves,
+    &.one_half,
+    &.one_halves,
+    &.one-half,
+    &.one-halves {
+      @extend .column-#{$grid_base / ($grid_base / 2)};
+
+      &.offset-1 {
+        &:first-of-type { margin-left: 25%; }
+      }
+
+      @include breakpoint(tablet) {}
+    }
+  }
+
+  // Full - 1/1
+  &.full,
+  &.full_width,
+  &.full-width,
+  &.whole {
+    @extend .column-#{$grid_base / ($grid_base)};
+    margin-right: 0;
+    padding: 0;
+  }
+
+
+
+
+  .grid-break-one_fifth & { &:nth-child(5n) { margin-right: 0; }}
+  .grid-break-one_quarter &,
+  .grid-break-one_fourth & { &:nth-child(4n) { margin-right: 0; }}
+  .grid-break-one_third & { &:nth-child(3n) { margin-right: 0; }}
+}
+

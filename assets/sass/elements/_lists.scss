@@ -1,0 +1,17 @@
+ul {
+ li {}
+}
+
+
+ul, ol {
+
+	// Default Page Template (exclude tab shortcode)
+	body.single .entry-content &,
+	.component.wysiwyg-component article & {
+		margin: 2.5rem 0 2.5rem 2rem;
+
+		li {
+			margin-bottom: 1.5rem;
+		}
+	}
+}

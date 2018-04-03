@@ -1,0 +1,33 @@
+.button {
+	background: $link-color;
+	color: $white;
+	font-size: 1.3rem;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 1rem 1.5rem;
+	display: inline-block;
+	@include font(Open Sans, 400);
+	@include ease;
+
+	// Button Colors
+	&.green { background: $green; }
+	&.blue { background: $blue; }
+	&.red { background: $red; }
+	&.orange { background: $orange; }
+
+	// Hover Styles
+	&:hover {
+		background: $link-hover-color;
+		color: $white;
+	}
+
+
+	+ .button {
+		margin-left: 1.5rem;
+	}
+}
+
+.button-wrap {
+	display: block;
+	margin-top: 2rem;
+}

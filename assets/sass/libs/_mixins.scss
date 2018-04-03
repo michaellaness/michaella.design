@@ -1,0 +1,231 @@
+// Colors for Buttons
+@mixin button-color($color){
+  background: $color;
+  &:hover {
+    background: darken($color, 10%);
+  }
+  &.outline {
+    color: $color;
+    border-color: $color;
+    .genericon { color: $color; }
+    &:hover {
+      background: $color !important;
+    }
+  }
+
+  // Gray Button Styles
+  @if ($color == $dark-grey) {
+    color: $white;
+    .genericon { color: $white; }
+
+    &:hover {
+      color: $white;
+      .genericon { color: $white; }
+    }
+  }
+
+  @if ($color == $black) {
+    color: $orange;
+    .genericon { color: $orange; }
+
+    &:hover {
+      background: $orange;
+      color: $black;
+      .genericon { color: $black; }
+    }
+  }
+}
+
+
+
+// Clearfix
+@mixin clearfix {
+ *zoom: 1;
+
+ &:after { clear: both; }
+
+ &:after,
+ &:before {
+  content: '';
+  display: table;
+ }
+}
+
+
+
+// Ease
+$ease-default: 333ms;
+@mixin ease($time: $ease-default, $el: all, $anim: ease-in-out) {
+  transition: $el $time $anim;
+}
+
+
+
+
+// Responsive
+@mixin breakpoint($name) {
+      @if map-has-key($breakpoints, $name) {
+        @media #{inspect(map-get($breakpoints, $name))} {
+      @content;
+    }
+  }
+  @else {
+    @warn "Couldn't find a breakpoint named `#{$name}`.";
+  }
+}
+
+
+
+// Vertical Alignment
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+
+// Background Images
+@mixin background-image($attachment: fixed) {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: $attachment !important;
+
+  // Attachment scroll on mobile and unsupported browsers
+  html.touch & { background-attachment: scroll !important; }
+}
+
+
+// Ultimate rem Mixin
+// http://hugogiraudel.com/2013/03/18/ultimate-rem-mixin/
+@function parseInt($n) {
+  @return $n / ($n * 0 + 1);
+}
+
+@mixin rem($property, $values, $important: null) {
+  $px : ();
+  $rem: ();
+
+  @if ($important == 'important') or ($important == '!important') or ($important == 'yes') or ($important == 'true') {
+    $important: !important;
+  }
+
+  @each $value in $values {
+
+    @if $value == 0 or $value == auto {
+      $px : append($px , $value);
+      $rem: append($rem, $value);
+    }
+
+    @else {
+      $unit: unit($value);
+      $val: parseInt($value);
+
+      @if $unit == "px" {
+        $px : append($px,  $value);
+        $rem: append($rem, ($val / 10 + rem));
+      }
+
+      @if $unit == "rem" {
+        $px : append($px,  ($val * 10 + px));
+        $rem: append($rem, $value);
+      }
+    }
+  }
+
+  @if $px == $rem {
+    #{$property}: $px $important;
+  } @else {
+    #{$property}: $px $important;
+    #{$property}: $rem $important;
+  }
+}
+
+
+// Override Webkit
+@mixin no-webkit {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  box-shadow: none;
+
+  &:focus, &:active {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+// Placeholders
+@mixin placeholder($color) {
+  ::-webkit-input-placeholder { color: $color; }
+  :-moz-placeholder { color: $color; }
+  ::-moz-placeholder { color: $color; }
+  :-ms-input-placeholder { color: $color; }
+}
+
+
+
+@mixin text-colors {
+  &.txt-green { color: $green; }
+  &.txt-blue { color: $blue; }
+  &.txt-purple { color: $purple; }
+  &.txt-red { color: $red; }
+  &.txt-orange { color: $orange; }
+  &.txt-yellow { color: $yellow; }
+  &.txt-light-grey { color: $light-grey; }
+  &.txt-gray,
+  &.txt-mid-grey { color: $mid-grey; }
+  &.txt-dark-grey { color: $dark-grey; }
+  &.txt-black { color: $black; }
+  &.txt-white { color: $white; }
+}
+
+@mixin border-colors {
+  &.border-green { border-color: $green; }
+  &.border-blue { border-color: $blue; }
+  &.border-purple { border-color: $purple; }
+  &.border-red { border-color: $red; }
+  &.border-orange { border-color: $orange; }
+  &.border-yellow { border-color: $yellow; }
+  &.border-light-grey { border-color: $light-grey; }
+  &.border-gray,
+  &.border-mid-grey { border-color: $mid-grey; }
+  &.border-dark-grey { border-color: $dark-grey; }
+  &.border-black { border-color: $black; }
+  &.border-white { border-color: $white; }
+}
+
+@mixin overlay-colors {
+  &.overlay-green:after { background: $green; }
+  &.overlay-blue:after { background: $blue; }
+  &.overlay-purple:after { background: $purple; }
+  &.overlay-red:after { background: $red; }
+  &.overlay-orange:after { background: $orange; }
+  &.overlay-yellow:after { background: $yellow; }
+  &.overlay-light-grey:after { background: $light-grey; }
+  &.overlay-gray:after,
+  &.overlay-mid-grey:after { background: $mid-grey; }
+  &.overlay-dark-grey:after { background: $dark-grey; }
+  &.overlay-black:after { background: $black; }
+  &.overlay-white:after { background: $white; }
+  // &.overlay-green { background-color: rgba($green, 0.5); }
+  // &.overlay-blue { background-color: rgba($blue, 0.5); }
+  // &.overlay-purple { background-color: rgba($purple, 0.5); }
+  // &.overlay-red { background-color: rgba($red, 0.5); }
+  // &.overlay-orange { background-color: rgba($orange, 0.5); }
+  // &.overlay-yellow { background-color: rgba($yellow, 0.5); }
+  // &.overlay-light-grey { background-color: rgba($light-grey, 0.5); }
+  // &.overlay-gray,
+  // &.overlay-mid-grey { background-color: rgba($mid-grey, 0.5); }
+  // &.overlay-dark-grey { background-color: rgba($dark-grey, 0.5); }
+  // &.overlay-black { background-color: rgba($black, 0.5); }
+  // &.overlay-white { background-color: rgba($white, 0.5); }
+}

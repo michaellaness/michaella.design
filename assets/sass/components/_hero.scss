@@ -1,0 +1,33 @@
+.component.hero {
+	padding: 15vh 0 6.5vh;
+	background: $super-light-grey;
+
+	body.single &,
+	body.archive &,
+	body.blog &,
+	body.page & {
+		margin-bottom: 7rem;
+	}
+
+	body.home & { margin-bottom: 0; }
+
+	.row {
+		margin-bottom: 0;
+	}
+
+	.headline {
+		color: $black;
+	}
+
+	.subheadline {
+		color: $black;
+	}
+
+	.content {
+		color: $black;
+	}
+
+	.button-wrap {
+		.button {}
+	}
+}

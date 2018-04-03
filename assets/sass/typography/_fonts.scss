@@ -1,0 +1,16 @@
+// Fallbacks
+$sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$serif: 'Times New Roman', serif;
+
+
+// Fonts
+@mixin font($font, $weight: normal, $style: normal) {
+	@if ($font == serif) {
+		font-family: 'Playfair Display', $serif;
+	}
+	@if ($font == sans-serif) {
+		font-family: 'Open Sans', $sans-serif;
+	}
+	font-weight: $weight;
+	font-style: $style;
+}

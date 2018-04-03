@@ -1,0 +1,21 @@
+
+// Color
+$link-color: $orange;
+$link-hover-color: $dark-blue;
+
+
+// Links
+a {
+ color:$link-color;
+ @include ease;
+
+ &:focus, &:hover, &:active { outline: 0; }
+ &:hover { color:$link-hover-color; }
+}
+
+.more-link {
+	display: block;
+	margin-top: 1rem;
+	text-transform: uppercase;
+	// @include font(serif);
+}

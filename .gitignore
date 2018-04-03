@@ -1,0 +1,12 @@
+
+# Grunt
+node_modules
+
+# CSS
+.sass-cache
+style.css
+style.css.map
+
+# JS
+assets/js/scripts.js
+assets/js/scripts.min.js

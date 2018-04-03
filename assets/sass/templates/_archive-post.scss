@@ -1,0 +1,30 @@
+body.blog {
+
+	.post {
+		float: left;
+		width: 100%;
+		margin-bottom: 4rem;
+
+		.entry-title {}
+
+		.entry-meta {
+			margin-bottom: 1.5rem;
+
+			.posted-on {
+				.entry-date {}
+
+				.updated {
+					display: none;
+				}
+			}
+
+			.byline {
+				display: none;
+			}
+		}
+
+		.entry-footer {
+			display: none;
+		}
+	}
+}

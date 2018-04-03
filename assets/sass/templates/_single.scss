@@ -1,0 +1,35 @@
+body.single {
+	.hero {}
+
+	.entry-header {
+		margin-bottom: 3rem;
+
+		.entry-title {}
+
+		.entry-meta {
+			.posted-on {
+				.entry-date {}
+
+				.updated {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.entry-content {
+
+		p {
+			margin-bottom: 2.5rem;
+		}
+	}
+
+	.post-navigation {
+		float: left;
+		width: 100%;
+		margin: 3rem 0 4rem;
+
+		.nav-previous { float: left; }
+		.nav-next { float: right; }
+	}
+}

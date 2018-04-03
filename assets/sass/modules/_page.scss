@@ -1,0 +1,25 @@
+
+body {
+	background: $white;
+}
+
+#page {
+	position: relative;
+	right: 0;
+	@include ease;
+
+	&.nav-active {
+		right: 50vw;
+	}
+}
+
+#primary {
+	margin-left: auto;
+	margin-right: auto;
+	width: 72%;
+}
+
+#secondary {
+	display: none;
+}
+

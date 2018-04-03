@@ -1,0 +1,15 @@
+
+// Highlight Colors
+$highlight-color: white;
+$highlight-bkgd-color: $orange;
+
+
+::selection {
+ background:$highlight-bkgd-color;
+ color:$highlight-color;
+}
+
+::-moz-selection {
+ background:$highlight-bkgd-color;
+ color:$highlight-color;
+}

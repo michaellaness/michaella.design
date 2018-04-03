@@ -1,0 +1,52 @@
+
+// Background Colors
+.bkgd-green {
+	background: $green;
+}
+.bkgd-blue {
+	background: $blue;
+}
+.bkgd-purple {
+	background: $purple;
+}
+.bkgd-red {
+	background: $red;
+}
+.bkgd-orange {
+	background: $orange;
+}
+.bkgd-yellow {
+	background: $yellow;
+}
+.bkgd-light-grey {
+	background: $light-grey;
+}
+.bkgd-mid-grey {
+	background: $mid-grey;
+}
+.bkgd-dark-grey {
+	background: $dark-grey;
+}
+.bkgd-white {
+	background: $white;
+}
+.bkgd-black {
+	background: $black;
+}
+
+
+
+// Background Images
+.bkgd-image {
+	@include background-image(scroll);
+
+	&.fixed-bkgd {
+		@include background-image;
+	}
+
+	&.bkgd-pattern {
+		background-repeat: repeat !important;
+		background-size: auto !important;
+		background-position: top left !important;
+	}
+}
