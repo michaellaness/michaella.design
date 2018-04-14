@@ -21,6 +21,16 @@ iframe {
 	margin-right: 1rem;
 }
 
+.alignright,
+.alignleft,
+.alignnone,
+.aligncenter {
+	.column & {
+		max-width: 100%;
+		width: 100%;
+	}
+}
+
 
 // Feature Images (Column Components & Featured Posts)
 .feature-image {

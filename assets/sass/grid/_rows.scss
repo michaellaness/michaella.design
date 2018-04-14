@@ -9,6 +9,11 @@
   }
 }
 
+.row-shortcode {
+  margin: 0 auto ($grid_vertical-space * 0.55);
+  @include clearfix;
+}
+
 .wrapper {
 	@include clearfix;
 }

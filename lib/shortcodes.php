@@ -25,3 +25,17 @@ function column_shortcode($atts, $content = null) {
 
    return $output;
 }
+
+
+
+
+
+
+
+
+// ----- Register Shortcodes ----- //
+function register_shortcodes(){
+   add_shortcode('row', 'row_shortcode');
+   add_shortcode('column', 'column_shortcode');
+}
+add_action( 'init', 'register_shortcodes');
