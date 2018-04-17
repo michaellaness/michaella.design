@@ -2,12 +2,17 @@
 /**
  * @package gr_s
  */
+
+
+$featProjType = get_field('project_type');
+$featProjImg = get_field('project_featured_image');
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php the_title( sprintf( '<h1 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
-
+		<?php if(!empty($featProjType)) { echo '<h5>' . $featProjType . '</h5>'; } ?>
 		<?php if ( 'post' == get_post_type() ) : ?>
 		<div class="entry-meta">
 			<?php gr_s_posted_on(); ?>

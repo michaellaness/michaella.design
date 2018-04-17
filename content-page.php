@@ -14,7 +14,7 @@
 		// Project Headline
 		$projectsFeatHeadline = get_field('home_projects_headline');
 		if(!empty($projectsFeatHeadline)) {
-			echo '<div id="latest-project-trigger" class="divider"><h3><a class="featured-project-scroll" href="#latest-project-trigger">' . $projectsFeatHeadline . ' <span class="genericon genericon-expand"></span></a></h3></div>';
+			echo '<div id="latest-project-trigger" class="divider"><h3><a class="featured-project-scroll hover-down" href="#latest-project-trigger">' . $projectsFeatHeadline . ' <span class="genericon genericon-expand"></span></a></h3></div>';
 		}
 
 
@@ -29,13 +29,13 @@
 ?>
 
 			<div id="home-featured-post" class="row featured-post">
+				<div class="column two_thirds">
+					<img src="<?php echo photon( $featProjImg) ; ?>">
+				</div>
 				<div class="column one_third">
 					<h2><a href="<?php echo get_the_permalink(); ?>"><?php echo $featProjTitle; ?></a></h2>
 					<h5><?php echo $featProjType; ?></h5>
 					<?php the_content( sprintf(__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'gr_s' ),the_title( '<span class="screen-reader-text">"', '"</span>', false )) ); ?>
-				</div>
-				<div class="column two_thirds">
-					<img src="<?php echo photon( $featProjImg) ; ?>">
 				</div>
 			</div>
 
@@ -46,7 +46,7 @@
 		// Project Archive Headline
 		$projectsArchiveHeadline = get_field('home_cta_headline');
 		if(!empty($projectsArchiveHeadline)) {
-			echo '<div class="divider view-all-work"><h3><a class="" href="/projects">' . $projectsArchiveHeadline . ' <span class="genericon genericon-next"></span></a></h3></div>';
+			echo '<div class="divider view-all-work"><h3><a class="hover-right" href="/projects">' . $projectsArchiveHeadline . ' <span class="genericon genericon-next"></span></a></h3></div>';
 		}
 
 

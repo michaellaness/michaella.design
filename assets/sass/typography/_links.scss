@@ -15,7 +15,20 @@ a {
 
 .more-link {
 	display: block;
-	margin-top: 1rem;
+	margin-top: 1.75rem;
 	text-transform: uppercase;
-	// @include font(serif);
+	text-decoration: none;
+
+	.meta-nav {
+		position: relative;
+		right: 0;
+		top: -0.2rem;
+		@include ease(333ms, right);
+	}
+
+	&:hover {
+		.meta-nav {
+			right: -0.5rem;
+		}
+	}
 }
